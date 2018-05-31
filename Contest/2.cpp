@@ -37,15 +37,15 @@ void String::getString() {
 }
 
 void String::changeFull(string s) {
-    string again;    //π›∫πµ«¥¬ πÆ¿⁄ø≠
-    int start, end;    //π›∫πµ«¥¬ πÆ¿⁄ø≠¿« Ω√¿€∞˙ ≥° ¿ßƒ°
-    char num;    //π›∫π »Ωºˆ char
-    int againNum;    //π›∫π »Ωºˆ int
-    int temp;    //π›∫π »Ωºˆ¿« Ω∫∆Æ∏µø°º≠¿« ¿ßƒ°
+    string again;    //반복되는 문자열
+    int start, end;    //반복 문자열의 시작, 끝 위치
+    char num;    //반복 횟수 문자
+    int againNum;    //반복 횟수
+    int temp;    //문자열에서 반복 횟수의 위치
     int pair = 0;
     
     while (s.find('(') != -1) {
-        //π›∫πµ«¥¬ πÆ¿⁄ø≠¿« Ω√¿€ ¿ßƒ°øÕ ≥° ¿ßƒ° √£±‚
+        //반복되는 문자열 찾아서 삽입하기
         if (s.find('(')) {
             start = s.find('(') + 1;
             pair++;
@@ -65,12 +65,12 @@ void String::changeFull(string s) {
             cout << "NO" << endl;
         }
         again = s.substr(start, end - start + 1);
-        s.erase(start - 1, 1);    //'('ªË¡¶
-        s.erase(end, 1);    //')'ªË¡¶
-        s.erase(temp - 2, 1);    //'^'ªË¡¶
-        s.erase(end, 1);    //º˝¿⁄ ªË¡¶
+        s.erase(start - 1, 1);    //'('지우기
+        s.erase(end, 1);    //')'지우기
+        s.erase(temp - 2, 1);    //'^'지우기
+        s.erase(end, 1);    //숫자 지우기
         for (int j = 0; j < againNum - 1; j++) {
-            s.insert(start-1, again);    //π›∫ππÆ¿⁄ µ°∫Ÿ¿Ã±‚
+            s.insert(start-1, again);    //반복된 문자열 삽입
         }
     }
 }
@@ -81,7 +81,7 @@ void String::same(string s1, string s2) {
 }
 
 int main() {
-    int N;    //∫Ò±≥«“ Ω∫∆Æ∏µ Ω÷¿« ∞πºˆ
+    int N;    //비교할 문자열 갯수
     cin >> N;
     
     String string(N);
